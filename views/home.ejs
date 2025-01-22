@@ -8,5 +8,25 @@
     
     <%- include('./partials/navbar') %>
     <%- include('./partials/scripts') %>
+
+    <div class="container mt-4 text-center">
+            <div class="row row-cols-4">
+                <% locals.blogs.forEach(blog => { %>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img src="<%= blog.CoverImageUrl %>" class="card-img-top" width="250px" height="405px" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= blog.Title %></h5>
+                                <!-- <p class="card-text"><%= blog.Body %></p> -->
+                                <a href="addBlog/Blog/<%= blog.id %>" class="btn btn-primary">View Full Blog</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+        </div>
+       
+    </div>
+
+    
 </body>
 </html>

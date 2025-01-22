@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
+const {Schema , model} = require('mongoose');
 const {createHmac, randomBytes} = require("crypto");
 const {createToken,verifyToken}= require("../services/authentication_service")
+const path = require("path");
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   fullName:{
     type:String,
     required:true,
@@ -21,7 +22,7 @@ const userSchema = new mongoose.Schema({
   },
   profileImageURL:{
     type:String,
-    default: "/public/assets/hacker.png"
+    default: "/assets/hacker.png"
   },
   role:{
     type:String,
@@ -71,5 +72,5 @@ userSchema.static("matchPasswordAndCreateToken", async function(email,userEntere
   
 })
 
-const User= mongoose.model("User",userSchema);
+const User= model("User",userSchema);
 module.exports={ User };

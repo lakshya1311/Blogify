@@ -5,7 +5,8 @@ function checkForCookies(cookieName){
             const token = req.cookies[cookieName];
             if(!token)
                 return next();
-                const payload = verifyToken(token);
+
+            const payload = verifyToken(token);
             req.user = payload;
         } catch (error) { }
 

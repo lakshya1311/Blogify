@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head') %>
+    <title>Blog</title>
+</head>
+<body>
+    
+    <%- include('./partials/navbar') %>
+    <%- include('./partials/scripts') %>
+
+    <div class="container mt-4">
+        <h1><%= blog.Title %></h1>
+        <img src="<%= blog.CoverImageUrl %>" width="500px">
+        <br>
+        <p class="text-justify mt-3"><%= blog.Body %></p>
+    </div>
+
+    <div class="container mt-4">
+        <img src="<%=blog.Author.profileImageURL%>" width="50px">
+        <b><%= blog.Author.fullName %></b>
+    </div>
+    <div class="container mt-4">
+        <h1>COMMENTS (<%= locals.comments.length %>)</h1>
+
+        <% if (locals.comments) { %>
+            <% for( let i = 0; i < locals.comments.length; i++ ) { %>
+                <div>
+                    <img src="<%=locals.comments[i].createdBy.profileImageURL%>" width="30px">
+                   <h8> <%= locals.comments[i].content %> </h8>
+                </div>
+            <% } %>
+        <% } %>
+
+        <% if (locals.user) { %>
+            <div class="container mt-3">
+            <form method="post" action="/addBlog/comment/<%= blog.id %>">
+                <div class="input-group">
+                    <textarea class="form-control" aria-label="With textarea" name="content" placeholder="Add your comment here"></textarea>
+                </div>
+                <button class="btn btn-sm btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+        <% } %>
+       
+    </div>
+
+
+
+    
+</body>
+</html>

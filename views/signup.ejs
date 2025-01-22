@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <%- include('./partials/head') %>
-    <title>Home</title>
+    <title>Sign Up</title>
 </head>
 <body>
     
@@ -10,7 +10,7 @@
     <%- include('./partials/scripts') %>
 
    <div class="container mt-4">
-    <form action="/user/signup" method="post">
+    <form action="/user/signup" method="post" enctype="multipart/form-data">
       <div class="mb-3">
           <label for="nameInput" class="form-label">Full Name</label>
           <input type="string" name="fullName" class="form-control" id="nameInput">
@@ -24,6 +24,10 @@
         <label for="exampleInputPassword1" class="form-label">Password</label>
         <input type="password" name="password" class="form-control" id="exampleInputPassword1">
       </div>
+      <div class="mb-3">
+        <label for="profileImageURL" class="form-label">Profile Picture</label>
+        <input class="form-control" type="file" id="profileImageURL" name="profileImageURL">
+    </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
    </div>
